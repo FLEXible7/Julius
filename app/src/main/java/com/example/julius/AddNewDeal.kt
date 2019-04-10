@@ -8,6 +8,9 @@ import android.view.View
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_add_new_deal.*
 import java.util.*
+import android.widget.EditText
+
+
 
 class AddNewDeal : AppCompatActivity() {
 
@@ -16,10 +19,7 @@ class AddNewDeal : AppCompatActivity() {
     lateinit var tag : Spinner
     lateinit var result : TextView
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_deal)
 
@@ -53,21 +53,24 @@ class AddNewDeal : AppCompatActivity() {
 
             dateDialog.show()
         }
+
+        val dealEdit = findViewById<EditText>(R.id.edit_deal_name)
+        val tagEdit = findViewById<TextView>(R.id.tag_result)
+        val dateEdit = findViewById<TextView>(R.id.pick_date)
+        val pushDealButton = findViewById<Button>(R.id.push_deal_button)
+
+        pushDealButton.setOnClickListener {
+
+            val deal = dealEdit.text.toString()
+            val tag = tagEdit.text.toString()
+            val date = dateEdit.text.toString()
+
+            val dealListIntent = Intent(this, MainActivity::class.java)
+            dealListIntent.putExtra("Deal", deal)
+            dealListIntent.putExtra("Tag", tag)
+            dealListIntent.putExtra("Date", date)
+            startActivity(dealListIntent)
+        }
     }
 
-
-
-
-    fun backToDealList(view: View)
-    {
-        val dealListIntent = Intent(this, MainActivity::class.java)
-        dealListIntent.putExtra("deal", edit_deal_name.getText())
-        dealListIntent.putExtra("tag", tag_result.getText())
-        dealListIntent.putExtra("date", pick_date.getText())
-        startActivity(dealListIntent)
-    }
-
-    fun pushNewDeal(view: View){
-        //val dealName =
-    }
 }
