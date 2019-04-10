@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Julius</string>
+    <string name = "transition_name_recycler">transition:RECYCLER</string>
+    <string name = "transition_name_addBtn">transition:ADDBUTTON</string>
 </resources>

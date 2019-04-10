@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.view.Window
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,12 +17,12 @@ class MainActivity : AppCompatActivity() {
 
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.adapter = RecyclerAdapter()
+
     }
 
     fun clickAddDeal(view: View){
         val newDealIntent = Intent(this, AddNewDeal::class.java)
         startActivity(newDealIntent)
     }
-
 
 }

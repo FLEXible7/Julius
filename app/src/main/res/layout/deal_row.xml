@@ -6,19 +6,28 @@
 
     <TextView
             android:text="Дело # "
-            android:layout_width="347dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/DealId" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:textAlignment="viewStart" android:textSize="24sp" android:layout_marginTop="92dp"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:textAlignment="viewStart" android:textSize="24sp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.0"/>
     <TextView
             android:text="Тег #"
-            android:layout_width="349dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/DealsTag" android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@+id/DealId" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/DealsTag"
+            android:textAlignment="viewStart" android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
-            android:textAlignment="viewStart" android:textSize="18sp" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.521"/>
+            app:layout_constraintTop_toBottomOf="@+id/DealId" app:layout_constraintHorizontal_bias="0.0"/>
+    <TextView
+            android:text="Срок #"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/DealsDate" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/DealsTag"/>
 </android.support.constraint.ConstraintLayout>
