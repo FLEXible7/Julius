@@ -1,7 +1,9 @@
 package com.example.julius
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.os.Build.VERSION_CODES.N
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -69,7 +71,8 @@ class AddNewDeal : AppCompatActivity() {
             dealListIntent.putExtra("Deal", deal)
             dealListIntent.putExtra("Tag", tag)
             dealListIntent.putExtra("Date", date)
-            startActivity(dealListIntent)
+            setResult(Activity.RESULT_OK, dealListIntent)
+            finish()
         }
     }
 

@@ -6,15 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.deal_row.view.*
 
-class RecyclerAdapter(): RecyclerView.Adapter<CustomViewHolder>() {
-
-    //var clickListener : (((View) -> Unit))? = null
-
-    val deals = ArrayList<String>()
-    val tags = ArrayList<String>()
-    val dates = ArrayList<String>()
-
-
+class RecyclerAdapter(val deals : ArrayList<String>, val tags : ArrayList<String>, val dates : ArrayList<String>): RecyclerView.Adapter<CustomViewHolder>() {
 
     override fun getItemCount(): Int {
 
@@ -31,14 +23,13 @@ class RecyclerAdapter(): RecyclerView.Adapter<CustomViewHolder>() {
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
 
-        //deals.add(items.get(0))
-        //tags.add(items.get(1))
-        //dates.add(items.get(2))
-
-
         holder.view.DealId.text = deals.get(position)
         holder.view.DealsTag.text = tags.get(position)
         holder.view.DealsDate.text = dates.get(position)
+    }
+
+    fun removeCheckedDeal(){
+
     }
 }
 

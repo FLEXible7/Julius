@@ -6,13 +6,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".PlacesActivity">
-
     <TextView
             android:text="Places Activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView5" android:layout_marginTop="8dp"
+            android:id="@+id/places_text" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent" android:textSize="30sp"/>
+
+    <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_navigation_places"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:itemBackground="@color/colorPrimary"
+            app:itemIconTint="@color/bottom_navigation_item_colors"
+            app:itemTextColor="@color/bottom_navigation_item_colors"
+            app:menu="@menu/menu_bottom_navigation"
+            app:layout_constraintHorizontal_bias="0.0"/>
+
 </android.support.constraint.ConstraintLayout>

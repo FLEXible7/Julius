@@ -1,5 +1,7 @@
 package com.example.julius
 
+import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
@@ -18,8 +20,6 @@ import org.w3c.dom.Text
 
 
 class MainActivity : AppCompatActivity() {
-
-    val manager = supportFragmentManager
 
     val bNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId)
@@ -49,46 +49,53 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-    val adapter = RecyclerAdapter()
-    //val dealItems = ArrayList<String>()
+    var deals = ArrayList<String>()
+    var tags = ArrayList<String>()
+    var dates = ArrayList<String>()
+    val adapter = RecyclerAdapter(deals, tags, dates)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val addToListIntent = intent
-        val deal = addToListIntent.getStringExtra("Deal")
-        val tag = addToListIntent.getStringExtra("Tag")
-        val date = addToListIntent.getStringExtra("Date")
+        recycler.layoutManager = LinearLayoutManager(this)
 
-        val example = findViewById<TextView>(R.id.exampleTW)
-        example.text = "" + deal + "\n" + tag + "\n" + date
-
-        val list = findViewById<RecyclerView>(R.id.recycler)
-        list.layoutManager = LinearLayoutManager(this)
-        list.adapter = adapter
-        //recycler.layoutManager = LinearLayoutManager(this)
-        //recycler.adapter = RecyclerAdapter()
-
-        val dealId = findViewById<TextView>(R.id.DealId)
-        val dealTag = findViewById<TextView>(R.id.DealsTag)
-        val dealDate = findViewById<TextView>(R.id.DealsDate)
-
-        //dealId.text = deal
-        //dealTag.text = tag
-        //dealDate.text = date
-
-        adapter.notifyDataSetChanged()
+        recycler.adapter = RecyclerAdapter(deals, tags, dates)
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigation.getMenu().getItem(0).setChecked(true)
         bottomNavigation.setOnNavigationItemSelectedListener(bNavigationItemSelectedListener)
 
+
+
     }
 
-        fun clickAddDeal(view: View){
-        val newDealIntent = Intent(this, AddNewDeal::class.java)
-        startActivity(newDealIntent)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        //val d = data!!.getStringExtra("Deal")
+        //val addToListIntent = intent
+        val deal = data!!.getStringExtra("Deal")
+        val tag = data!!.getStringExtra("Tag")
+        val date = data!!.getStringExtra("Date")
+
+        deals.add(deal)
+        tags.add(tag)
+        dates.add(date)
+
+        adapter.notifyDataSetChanged()
+        recycler.adapter = RecyclerAdapter(deals, tags, dates)
+
+
     }
+
+    fun clickAddDeal(view: View){
+        val newDealIntent = Intent(this, AddNewDeal::class.java)
+        startActivityForResult(newDealIntent,1)
+    }
+
+
 
 }
 

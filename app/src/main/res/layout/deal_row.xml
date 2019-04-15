@@ -3,7 +3,6 @@
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_height="wrap_content" android:layout_width="match_parent">
-
     <TextView
             android:text="Дело # "
             android:layout_width="0dp"
@@ -30,4 +29,16 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/DealsTag"/>
+    <CheckBox
+            android:id="@+id/finish_deal_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="@+id/DealsTag"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="28dp"
+            app:layout_constraintBottom_toBottomOf="@+id/DealsDate"
+            app:layout_constraintHorizontal_bias="0.881"/>
 </android.support.constraint.ConstraintLayout>

@@ -7,7 +7,7 @@ import android.support.design.widget.BottomNavigationView
 
 class NewsActivity : AppCompatActivity() {
 
-    /*val bNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+    val bNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId)
         {
             R.id.deals ->{
@@ -17,7 +17,6 @@ class NewsActivity : AppCompatActivity() {
             }
 
             R.id.news ->{
-
                 return@OnNavigationItemSelectedListener true
             }
 
@@ -34,13 +33,14 @@ class NewsActivity : AppCompatActivity() {
             }
         }
         false
-    }*/
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
 
-        //val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        //bottomNavigation.setOnNavigationItemSelectedListener(bNavigationItemSelectedListener)
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation_news)
+        bottomNavigation.getMenu().getItem(1).setChecked(true)
+        bottomNavigation.setOnNavigationItemSelectedListener(bNavigationItemSelectedListener)
     }
 }
