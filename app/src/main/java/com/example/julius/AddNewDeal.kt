@@ -16,7 +16,7 @@ import android.widget.EditText
 
 class AddNewDeal : AppCompatActivity() {
 
-    val tags = arrayOf("Не выбрано", "Работа", "Учёба", "Повседневное", "Личное", "Интересное")
+    val tags = arrayOf("Работа", "Учёба", "Повседневное", "Личное", "Интересное")
 
     lateinit var tag : Spinner
     lateinit var result : TextView
@@ -67,12 +67,22 @@ class AddNewDeal : AppCompatActivity() {
             val tag = tagEdit.text.toString()
             val date = dateEdit.text.toString()
 
-            val dealListIntent = Intent(this, MainActivity::class.java)
-            dealListIntent.putExtra("Deal", deal)
-            dealListIntent.putExtra("Tag", tag)
-            dealListIntent.putExtra("Date", date)
-            setResult(Activity.RESULT_OK, dealListIntent)
-            finish()
+            if (deal == "") {
+                Toast.makeText(this, "Заполните поле \"Заголовок\"", Toast.LENGTH_SHORT).show()
+            }
+
+            else if (date == "") {
+                Toast.makeText(this, "Заполните поле \"Срок выполнения\"", Toast.LENGTH_SHORT).show()
+            }
+
+            else {
+                val dealListIntent = Intent(this, MainActivity::class.java)
+                dealListIntent.putExtra("Deal", deal)
+                dealListIntent.putExtra("Tag", tag)
+                dealListIntent.putExtra("Date", date)
+                setResult(Activity.RESULT_OK, dealListIntent)
+                finish()
+            }
         }
     }
 

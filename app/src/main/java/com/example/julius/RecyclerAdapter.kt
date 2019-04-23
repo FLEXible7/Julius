@@ -28,9 +28,6 @@ class RecyclerAdapter(val deals : ArrayList<String>, val tags : ArrayList<String
         holder.view.DealsDate.text = dates.get(position)
     }
 
-    fun removeCheckedDeal(){
-
-    }
 }
 
 

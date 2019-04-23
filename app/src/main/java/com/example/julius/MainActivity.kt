@@ -16,7 +16,6 @@ import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.TextView
 import android.widget.Toast
-import org.w3c.dom.Text
 
 
 class MainActivity : AppCompatActivity() {
@@ -66,16 +65,11 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.getMenu().getItem(0).setChecked(true)
         bottomNavigation.setOnNavigationItemSelectedListener(bNavigationItemSelectedListener)
-
-
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        //val d = data!!.getStringExtra("Deal")
-        //val addToListIntent = intent
         val deal = data!!.getStringExtra("Deal")
         val tag = data!!.getStringExtra("Tag")
         val date = data!!.getStringExtra("Date")
@@ -95,14 +89,4 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(newDealIntent,1)
     }
 
-
-
 }
-
-
-//dealItems.add(deal)
-//dealItems.add(tag)
-//dealItems.add(date)
-
-//recycler.layoutManager = LinearLayoutManager(this)
-//recycler.adapter = RecyclerAdapter()

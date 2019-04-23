@@ -10,6 +10,7 @@
         android:id="@+id/news"
         android:icon="@android:drawable/ic_input_get"
         android:title="Афиша"/>
+
     <item
         android:id="@+id/interesting_places"
         android:icon="@android:drawable/ic_menu_help"

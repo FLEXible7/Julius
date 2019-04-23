@@ -27,7 +27,8 @@
 
     <Button
             android:text="Добавить"
-            android:background="@android:color/white"
+            android:textColor="@android:color/white"
+            android:background="@drawable/push_button_shape"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/push_deal_button"
@@ -40,14 +41,14 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintVertical_bias="0.185"/>
+            app:layout_constraintVertical_bias="0.918"/>
 
     <EditText
             android:id="@+id/edit_deal_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textCapWords"
+            android:inputType="textCapSentences"
             android:backgroundTint="@color/colorPrimary"
             android:textCursorDrawable="@null"
             tools:layout_editor_absoluteX="8dp"
@@ -76,7 +77,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"/>
     <TextView
-            android:text="Срок Выполнения"
+            android:text="Срок выполнения"
             android:textColor="@color/textColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

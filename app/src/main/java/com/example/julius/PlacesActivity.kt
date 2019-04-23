@@ -22,6 +22,7 @@ class PlacesActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
 
+
             R.id.interesting_places ->{
 
                 return@OnNavigationItemSelectedListener true
