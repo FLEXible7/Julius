@@ -9,11 +9,11 @@
     <item
         android:id="@+id/news"
         android:icon="@android:drawable/ic_input_get"
-        android:title="Афиша"/>
+        android:title="Новости"/>
 
     <item
         android:id="@+id/interesting_places"
-        android:icon="@android:drawable/ic_menu_help"
+        android:icon="@android:drawable/ic_menu_search"
         android:title="Куда сходить?"/>
     <item
         android:id="@+id/history"

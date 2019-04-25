@@ -3,7 +3,6 @@ package com.example.julius
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.os.Build.VERSION_CODES.N
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -56,7 +55,7 @@ class AddNewDeal : AppCompatActivity() {
             dateDialog.show()
         }
 
-        val dealEdit = findViewById<EditText>(R.id.edit_deal_name)
+        val dealEdit = findViewById<EditText>(R.id.edit_request)
         val tagEdit = findViewById<TextView>(R.id.tag_result)
         val dateEdit = findViewById<TextView>(R.id.pick_date)
         val pushDealButton = findViewById<Button>(R.id.push_deal_button)

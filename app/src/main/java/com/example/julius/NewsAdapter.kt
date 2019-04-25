@@ -1,10 +1,16 @@
 package com.example.julius
 
+import android.content.Intent
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.news_row.view.*
+import android.support.v4.content.ContextCompat.startActivity
+
+
 
 class NewsAdapter(val newsList: NewsList): RecyclerView.Adapter<CustomViewHolderNews>() {
 
@@ -25,10 +31,15 @@ class NewsAdapter(val newsList: NewsList): RecyclerView.Adapter<CustomViewHolder
     override fun onBindViewHolder(holder: CustomViewHolderNews, position: Int) {
 
         val item = newsList.results.get(position)
-        holder.view.title.text = item.details.title
+        holder.view.title.text = item.title
+        holder.view.site_url.text = item.site_url
 
-        val description = item.details.description.replace("<p>", "").replace("</p>", "").replace("\\n", "")
-        holder.view.description.text = description
+        /*holder.view.site_url.setOnClickListener{
+            val url = item.site_url
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }*/
     }
 
 }
