@@ -1,9 +1,11 @@
 package com.example.julius
 
 import android.content.Intent
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import com.google.gson.annotations.SerializedName
@@ -62,7 +64,7 @@ class NewsActivity : AppCompatActivity() {
 
     fun loadData(){
 
-        val url = "https://kudago.com/public-api/v1.2/news/?fields=publication_date,title,site_url"
+        val url = "https://kudago.com/public-api/v1.2/news/?fields=title,site_url,images&page_size=100&order_by=favorites_count&actual_only=1"
 
         val request = Request.Builder()
             .url(url)
@@ -74,8 +76,6 @@ class NewsActivity : AppCompatActivity() {
             override fun onResponse(call: Call, response: Response) {
 
                 val body = response.body()?.string()
-                println(body)
-
                 val gson = GsonBuilder().create()
                 val newsList = gson.fromJson(body, NewsList::class.java)
 
@@ -88,13 +88,13 @@ class NewsActivity : AppCompatActivity() {
             }
         })
     }
+
 }
 
 
 class NewsList(val results : List<Results>){}
 
-class Results (val publication_date : Int, val title : String,
-               @SerializedName("images") val imgs : List<Imgs>, val site_url : String)
+class Results (val title : String, @SerializedName("images") val imgs : List<Imgs>, val site_url : String)
 
 class Imgs(@SerializedName("image") val img : String, @SerializedName("source") val src : Src)
 
