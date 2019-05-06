@@ -80,7 +80,7 @@ class NewsActivity : AppCompatActivity() {
                 val newsList = gson.fromJson(body, NewsList::class.java)
 
                 runOnUiThread {
-                    news_recycler.adapter = NewsAdapter(newsList)
+                    news_recycler.adapter = NewsAdapter(this@NewsActivity, newsList)
                 }
             }
 

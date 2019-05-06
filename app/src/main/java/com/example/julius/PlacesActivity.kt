@@ -90,7 +90,7 @@ class PlacesActivity : AppCompatActivity() {
                 val placesList = gson.fromJson(body, PlacesList::class.java)
 
                 runOnUiThread {
-                    places_recycler.adapter = PlacesAdapter(placesList)
+                    places_recycler.adapter = PlacesAdapter(this@PlacesActivity, placesList)
                 }
             }
 
