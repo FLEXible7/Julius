@@ -29,11 +29,10 @@ class PlacesAdapter(val context: Context, val placesList : PlacesList): Recycler
         val item = placesList.results.get(position)
 
         holder.view.place_title.text = item.title
-        holder.view.place_description.text = item.description
         holder.view.place_address.text = item.address
         holder.view.place_phone.text = item.phone
 
-        holder.view.place_title.setOnClickListener{
+        holder.view.setOnClickListener{
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.item_url))
             context.startActivity(intent)
         }

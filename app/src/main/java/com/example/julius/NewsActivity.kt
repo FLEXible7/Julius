@@ -64,7 +64,7 @@ class NewsActivity : AppCompatActivity() {
 
     fun loadData(){
 
-        val url = "https://kudago.com/public-api/v1.2/news/?fields=title,site_url,images&page_size=100&order_by=favorites_count&actual_only=1"
+        val url = "https://kudago.com/public-api/v1.2/news/?fields=title,site_url,images&page_size=20&order_by=favorites_count&actual_only=1"
 
         val request = Request.Builder()
             .url(url)

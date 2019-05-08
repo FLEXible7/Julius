@@ -42,7 +42,6 @@ class NewsAdapter(val context : Context, val newsList: NewsList): RecyclerView.A
             context.startActivity(intent)
         }
     }
-
 }
 
 class CustomViewHolderNews(val view: View): RecyclerView.ViewHolder(view){

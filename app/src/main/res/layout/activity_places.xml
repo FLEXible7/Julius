@@ -18,10 +18,9 @@
             android:textCursorDrawable="@null"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/find_place_btn"/>
+            app:layout_constraintEnd_toStartOf="@+id/find_place_btn" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"/>
 
     <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottom_navigation_places"
