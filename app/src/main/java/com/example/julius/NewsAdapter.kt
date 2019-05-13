@@ -4,7 +4,6 @@ package com.example.julius
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -42,6 +41,7 @@ class NewsAdapter(val context : Context, val newsList: NewsList): RecyclerView.A
             context.startActivity(intent)
         }
     }
+
 }
 
 class CustomViewHolderNews(val view: View): RecyclerView.ViewHolder(view){

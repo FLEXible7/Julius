@@ -23,29 +23,23 @@ class PlacesActivity : AppCompatActivity() {
     val bNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId)
         {
-            R.id.deals ->{
-                val dealsIntent = Intent(this, MainActivity::class.java)
-                startActivity(dealsIntent)
-                return@OnNavigationItemSelectedListener true
-            }
-
             R.id.news ->{
                 val newsIntent = Intent(this, NewsActivity::class.java)
                 startActivity(newsIntent)
                 return@OnNavigationItemSelectedListener true
             }
 
+            R.id.deals ->{
+                val dealsIntent = Intent(this, MainActivity::class.java)
+                startActivity(dealsIntent)
+                return@OnNavigationItemSelectedListener true
+            }
 
             R.id.interesting_places ->{
 
                 return@OnNavigationItemSelectedListener true
             }
 
-            R.id.history ->{
-                val historyIntent = Intent(this, HistoryActivity::class.java)
-                startActivity(historyIntent)
-                return@OnNavigationItemSelectedListener true
-            }
         }
         false
     }
@@ -68,6 +62,9 @@ class PlacesActivity : AppCompatActivity() {
 
             if (findViewById<EditText>(R.id.edit_request).text.toString() != ""){
                 loadPlaces()
+            }
+            else{
+                Toast.makeText(this, "Введите запрос", Toast.LENGTH_SHORT).show()
             }
         }
 

@@ -10,7 +10,7 @@ import android.widget.*
 import kotlinx.android.synthetic.main.activity_add_new_deal.*
 import java.util.*
 import android.widget.EditText
-
+import java.io.File
 
 
 class AddNewDeal : AppCompatActivity() {
@@ -23,6 +23,7 @@ class AddNewDeal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_deal)
+
 
         //Tag
         tag = findViewById(R.id.spinner) as Spinner
@@ -75,6 +76,10 @@ class AddNewDeal : AppCompatActivity() {
             }
 
             else {
+                //val fileName = "${UUID.randomUUID()}.deal"
+                //val dealFile = File(filePath, fileName)
+                //dealFile.createNewFile()
+                //dealFile.writeText(deal + "\n" + tag + "\n" + date)
                 val dealListIntent = Intent(this, MainActivity::class.java)
                 dealListIntent.putExtra("Deal", deal)
                 dealListIntent.putExtra("Tag", tag)

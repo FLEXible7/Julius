@@ -11,12 +11,12 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
-import android.widget.TextView
-import android.widget.Toast
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,25 +24,19 @@ class MainActivity : AppCompatActivity() {
     val bNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId)
         {
-            R.id.deals ->{
-                return@OnNavigationItemSelectedListener true
-            }
-
             R.id.news ->{
                 val newsIntent = Intent(this, NewsActivity::class.java)
                 startActivity(newsIntent)
                 return@OnNavigationItemSelectedListener true
             }
 
-            R.id.interesting_places ->{
-                val placesIntent = Intent(this, PlacesActivity::class.java)
-                startActivity(placesIntent)
+            R.id.deals ->{
                 return@OnNavigationItemSelectedListener true
             }
 
-            R.id.history ->{
-                val historyIntent = Intent(this, HistoryActivity::class.java)
-                startActivity(historyIntent)
+            R.id.interesting_places ->{
+                val placesIntent = Intent(this, PlacesActivity::class.java)
+                startActivity(placesIntent)
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -60,8 +54,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         recycler.layoutManager = LinearLayoutManager(this)
-
         recycler.adapter = RecyclerAdapter(deals, tags, dates)
+
+        //var dealDB = Room.databaseBuilder(applicationContext, DealsDB::class.java, "DealsDataBase")
+          //  .build()
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.getMenu().getItem(0).setChecked(true)
@@ -81,7 +77,6 @@ class MainActivity : AppCompatActivity() {
 
         adapter.notifyDataSetChanged()
         recycler.adapter = RecyclerAdapter(deals, tags, dates)
-
 
     }
 
