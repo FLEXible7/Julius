@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_add_new_deal.*
@@ -23,6 +24,12 @@ class AddNewDeal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_deal)
+
+        //Storage
+        val filePath = File(filesDir, "deal")
+        if (!filePath.isDirectory || !filePath.exists()){
+            filePath.mkdir()
+        }
 
 
         //Tag
@@ -61,6 +68,7 @@ class AddNewDeal : AppCompatActivity() {
         val dateEdit = findViewById<TextView>(R.id.pick_date)
         val pushDealButton = findViewById<Button>(R.id.push_deal_button)
 
+        //SendData
         pushDealButton.setOnClickListener {
 
             val deal = dealEdit.text.toString()
@@ -76,16 +84,14 @@ class AddNewDeal : AppCompatActivity() {
             }
 
             else {
-                //val fileName = "${UUID.randomUUID()}.deal"
-                //val dealFile = File(filePath, fileName)
-                //dealFile.createNewFile()
-                //dealFile.writeText(deal + "\n" + tag + "\n" + date)
+
+                val fileName = "${UUID.randomUUID()}.deal"
+
+                val dealFile = File(filePath, fileName)
+                dealFile.createNewFile()
+                dealFile.writeText(deal + "\n" + tag + "\n" + date)
                 val dealListIntent = Intent(this, MainActivity::class.java)
-                dealListIntent.putExtra("Deal", deal)
-                dealListIntent.putExtra("Tag", tag)
-                dealListIntent.putExtra("Date", date)
-                setResult(Activity.RESULT_OK, dealListIntent)
-                finish()
+                startActivity(dealListIntent)
             }
         }
     }

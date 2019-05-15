@@ -2,6 +2,7 @@ package com.example.julius
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -15,11 +16,20 @@ import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.Button
+import com.example.julius.DB.DataBase
+import com.example.julius.DB.DealDataSource
+import com.example.julius.DB.DealRepository
 import kotlinx.android.synthetic.main.activity_main.*
-
+import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
+
+    var deals = ArrayList<String>()
+    var tags = ArrayList<String>()
+    var dates = ArrayList<String>()
+    //val adapter = RecyclerAdapter(deals, tags, dates)
+
 
     val bNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId)
@@ -43,46 +53,32 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-    var deals = ArrayList<String>()
-    var tags = ArrayList<String>()
-    var dates = ArrayList<String>()
-    val adapter = RecyclerAdapter(deals, tags, dates)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         recycler.layoutManager = LinearLayoutManager(this)
-        recycler.adapter = RecyclerAdapter(deals, tags, dates)
 
-        //var dealDB = Room.databaseBuilder(applicationContext, DealsDB::class.java, "DealsDataBase")
-          //  .build()
+        val folder = File(filesDir, "deal")
+        //folder.delete()
+        val list = folder.listFiles()
+        for (i in list){
+            println(i.name)
+            val some = i.readText()
+            println(i.readText())
+        }
+
+        recycler.adapter = RecyclerAdapter(list)
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.getMenu().getItem(0).setChecked(true)
         bottomNavigation.setOnNavigationItemSelectedListener(bNavigationItemSelectedListener)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        val deal = data!!.getStringExtra("Deal")
-        val tag = data!!.getStringExtra("Tag")
-        val date = data!!.getStringExtra("Date")
-
-        deals.add(deal)
-        tags.add(tag)
-        dates.add(date)
-
-        adapter.notifyDataSetChanged()
-        recycler.adapter = RecyclerAdapter(deals, tags, dates)
-
-    }
-
     fun clickAddDeal(view: View){
         val newDealIntent = Intent(this, AddNewDeal::class.java)
-        startActivityForResult(newDealIntent,1)
+        startActivity(newDealIntent)
     }
 
 }
