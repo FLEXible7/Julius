@@ -16,9 +16,6 @@ import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.Button
-import com.example.julius.DB.DataBase
-import com.example.julius.DB.DealDataSource
-import com.example.julius.DB.DealRepository
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 
