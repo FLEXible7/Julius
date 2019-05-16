@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val itemDecoration = DividerItemDecoration(applicationContext, 1)
-        places_recycler.addItemDecoration(itemDecoration)
+        recycler.addItemDecoration(itemDecoration)
 
         recycler.layoutManager = LinearLayoutManager(this)
 
