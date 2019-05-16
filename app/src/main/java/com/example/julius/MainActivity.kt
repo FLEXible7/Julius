@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.getMenu().getItem(0).setChecked(true)
         bottomNavigation.setOnNavigationItemSelectedListener(bNavigationItemSelectedListener)
 
-        colorFinishedDeal = ColorDrawable(Color.parseColor("#78D37E"))
+        colorFinishedDeal = ColorDrawable(Color.parseColor("#bdecb6"))
         finishedIcon = ContextCompat.getDrawable(this, R.drawable.ic_mtrl_chip_checked_circle)!!
 
         val itemTouchHelperCallBack = object : ItemTouchHelper.SimpleCallback(0,
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDirection: Int) {
-                (adapter as RecyclerAdapter).removeItem(viewHolder.adapterPosition, viewHolder)
+                adapter.removeItem(viewHolder.adapterPosition, viewHolder)
             }
 
             override fun onChildDraw(
@@ -141,7 +141,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun clickAddDeal(view: View){
+    fun clickAddDeal(){
         val newDealIntent = Intent(this, AddNewDeal::class.java)
         startActivity(newDealIntent)
     }

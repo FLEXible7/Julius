@@ -1,12 +1,12 @@
 package com.example.julius
 
 import android.content.Context
+import android.graphics.Color
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import kotlinx.android.synthetic.main.deal_row.view.*
 import java.io.File
 
@@ -51,7 +51,7 @@ class RecyclerAdapter(val context : Context, val list : ArrayList<String>, val p
         }
         notifyItemRemoved(position)
 
-        Snackbar.make(viewHolder.itemView, "$removedItem удалено", Snackbar.LENGTH_SHORT).setAction("Восстановить"){
+        val snackbar = Snackbar.make(viewHolder.itemView, "$removedItem удалено", Snackbar.LENGTH_SHORT).setAction("Восстановить"){
             list.add(removedPosition, removedItem)
 
             val fileName = path.get(removedPosition).name
@@ -66,7 +66,13 @@ class RecyclerAdapter(val context : Context, val list : ArrayList<String>, val p
                     splittedText.get(2))
 
             notifyItemInserted(removedPosition)
-        }.show()
+        }
+
+        snackbar.setActionTextColor(Color.WHITE)
+        val sbView = snackbar.view
+        sbView.setBackgroundColor(Color.rgb(192, 192, 192))
+
+        snackbar.show()
     }
 
 }
@@ -75,3 +81,4 @@ class RecyclerAdapter(val context : Context, val list : ArrayList<String>, val p
 class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view){
 
 }
+
