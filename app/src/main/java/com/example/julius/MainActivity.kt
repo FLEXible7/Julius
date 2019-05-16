@@ -139,10 +139,11 @@ class MainActivity : AppCompatActivity() {
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallBack)
         itemTouchHelper.attachToRecyclerView(recycler)
 
-    }
+        val addDealBtn = findViewById<Button>(R.id.addDeal)
+        addDealBtn.setOnClickListener {
+            val newDealIntent = Intent(this, AddNewDeal::class.java)
+            startActivity(newDealIntent)
+        }
 
-    fun clickAddDeal(){
-        val newDealIntent = Intent(this, AddNewDeal::class.java)
-        startActivity(newDealIntent)
     }
 }
