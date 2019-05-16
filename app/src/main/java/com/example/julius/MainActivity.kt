@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.ContextCompat.startActivity
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
@@ -22,6 +23,7 @@ import android.view.View
 import android.view.Window
 import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_places.*
 import java.io.File
 import java.nio.file.Files
 
@@ -59,6 +61,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val itemDecoration = DividerItemDecoration(applicationContext, 1)
+        places_recycler.addItemDecoration(itemDecoration)
 
         recycler.layoutManager = LinearLayoutManager(this)
 
