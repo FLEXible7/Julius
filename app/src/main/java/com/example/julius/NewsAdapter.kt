@@ -1,16 +1,18 @@
 package com.example.julius
 
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
 import kotlinx.android.synthetic.main.news_row.view.*
 import com.squareup.picasso.Picasso
-
+import java.io.File
+import java.util.*
 
 
 class NewsAdapter(val context : Context, val newsList: NewsList): RecyclerView.Adapter<CustomViewHolderNews>() {
@@ -36,14 +38,38 @@ class NewsAdapter(val context : Context, val newsList: NewsList): RecyclerView.A
         val newsImage = holder.view.news_image
         Picasso.get().load(item.imgs.get(0).img).resize(1000 , 600).centerCrop().into(newsImage)
 
-        newsImage.setOnClickListener{
+        val goToBrowserBtn = holder.view.go_to_browser_button
+        goToBrowserBtn.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.site_url))
             context.startActivity(intent)
         }
+
+        val addNewsButton = holder.view.add_news_button
+        addNewsButton.setOnClickListener {
+            val fileName = "${UUID.randomUUID()}.deal"
+            val filePath = File(context.filesDir, "deal")
+            val newsFile = File(filePath, fileName)
+            newsFile.createNewFile()
+
+            newsFile.writeText(item.title + "\n" +
+                                "События" + "\n" + "" +
+                                "\n" + item.site_url)
+            Toast.makeText(context, "Новость добавлена в список заметок", Toast.LENGTH_SHORT).show()
+        }
+
+        val shareButton = holder.view.share_news_button
+        shareButton.setOnClickListener {
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "type/plain"
+            shareIntent.putExtra(Intent.EXTRA_TEXT, item.site_url)
+            context.startActivity(Intent.createChooser(shareIntent, "Поделиться новостью"))
+        }
     }
+
+
 
 }
 
-class CustomViewHolderNews(val view: View): RecyclerView.ViewHolder(view){
+class CustomViewHolderNews internal constructor(val view: View): RecyclerView.ViewHolder(view){
 
 }

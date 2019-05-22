@@ -3,17 +3,17 @@
 
     <item
             android:id="@+id/deals"
-            android:icon="@android:drawable/ic_menu_agenda"
+            android:icon="@drawable/icons8_todo_list_96"
             android:title="Список задач"/>
 
     <item
             android:id="@+id/news"
-            android:icon="@android:drawable/ic_input_get"
-            android:title="Новости"/>
+            android:icon="@drawable/icons8_news_96"
+            android:title="События"/>
 
     <item
         android:id="@+id/interesting_places"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="Куда сходить?"/>
+        android:icon="@drawable/icons8_world_map_96"
+        android:title="Места"/>
 
 </menu>

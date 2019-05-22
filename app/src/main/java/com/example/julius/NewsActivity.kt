@@ -10,6 +10,9 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.view.ContextMenu
+import android.view.MenuItem
+import android.view.View
 import com.google.gson.GsonBuilder
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.synthetic.main.activity_news.*
@@ -48,7 +51,6 @@ class NewsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_news)
 
         val itemDecoration = DividerItemDecoration(applicationContext, 1)
-        itemDecoration.setDrawable(ColorDrawable(Color.DKGRAY))
         news_recycler.addItemDecoration(itemDecoration)
 
         news_recycler.layoutManager = LinearLayoutManager(this)

@@ -1,13 +1,16 @@
 package com.example.julius
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.deal_row.view.*
+import kotlinx.android.synthetic.main.news_row.view.*
 import java.io.File
 
 class RecyclerAdapter(val context : Context, val list : ArrayList<String>, val path : Array<File>): RecyclerView.Adapter<CustomViewHolder>() {
@@ -35,6 +38,13 @@ class RecyclerAdapter(val context : Context, val list : ArrayList<String>, val p
         holder.view.DealId.text = splittedText.get(0)
         holder.view.DealsTag.text = splittedText.get(1)
         holder.view.DealsDate.text = splittedText.get(2)
+
+        val goToBrowser = holder.view
+        goToBrowser.setOnClickListener {
+            val url = splittedText.get(3)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            context.startActivity(intent)
+        }
     }
 
     fun removeItem(position : Int, viewHolder : RecyclerView.ViewHolder) {
