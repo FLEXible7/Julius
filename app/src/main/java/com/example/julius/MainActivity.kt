@@ -8,7 +8,10 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.net.Uri
+import android.os.Build.VERSION_CODES.N
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -22,6 +25,7 @@ import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.Button
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_places.*
 import java.io.File
@@ -64,6 +68,10 @@ class MainActivity : AppCompatActivity() {
 
         val itemDecoration = DividerItemDecoration(applicationContext, 1)
         recycler.addItemDecoration(itemDecoration)
+
+        if (!isNetworkAvailable(applicationContext)){
+            Toast.makeText(this, "Интернет-соединение отсутствует", Toast.LENGTH_SHORT).show()
+        }
 
         recycler.layoutManager = LinearLayoutManager(this)
 
@@ -145,5 +153,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(newDealIntent)
         }
 
+    }
+
+    fun isNetworkAvailable(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        var activeNetworkInfo: NetworkInfo? = null
+        activeNetworkInfo = cm.activeNetworkInfo
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected
     }
 }

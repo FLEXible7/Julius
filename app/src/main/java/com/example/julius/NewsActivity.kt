@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.google.gson.GsonBuilder
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.synthetic.main.activity_news.*

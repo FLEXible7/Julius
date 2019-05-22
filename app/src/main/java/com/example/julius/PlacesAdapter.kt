@@ -36,6 +36,7 @@ class PlacesAdapter(val context: Context, val placesList : PlacesList): Recycler
         holder.view.place_address.text = item.address
         holder.view.place_phone.text = item.phone
 
+
         val goToBrowserBtn = holder.view.go_to_browser_btn
         goToBrowserBtn.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.item_url))
