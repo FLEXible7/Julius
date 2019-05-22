@@ -52,8 +52,8 @@ class NewsAdapter(val context : Context, val newsList: NewsList): RecyclerView.A
             newsFile.createNewFile()
 
             newsFile.writeText(item.title + "\n" +
-                                "События" + "\n" + "" +
-                                "\n" + item.site_url)
+                                "События" + "\n" +
+                                "Без срока" + "\n" + item.site_url)
             Toast.makeText(context, "Новость добавлена в список заметок", Toast.LENGTH_SHORT).show()
         }
 

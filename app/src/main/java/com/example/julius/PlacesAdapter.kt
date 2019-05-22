@@ -51,8 +51,8 @@ class PlacesAdapter(val context: Context, val placesList : PlacesList): Recycler
             newsFile.createNewFile()
 
             newsFile.writeText(item.title + "\n" +
-                    "Места" + "\n" + "" +
-                    "\n" + item.item_url)
+                                "Места" + "\n" +
+                                "Без срока" + "\n" + item.item_url)
             Toast.makeText(context, "Место добавлено в список заметок", Toast.LENGTH_SHORT).show()
         }
 
