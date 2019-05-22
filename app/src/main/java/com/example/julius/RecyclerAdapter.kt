@@ -39,11 +39,13 @@ class RecyclerAdapter(val context : Context, val list : ArrayList<String>, val p
         holder.view.DealsTag.text = splittedText.get(1)
         holder.view.DealsDate.text = splittedText.get(2)
 
-        val goToBrowser = holder.view
-        goToBrowser.setOnClickListener {
-            val url = splittedText.get(3)
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            context.startActivity(intent)
+        if (splittedText.size == 4){
+            val goToBrowser = holder.view
+            goToBrowser.setOnClickListener {
+                val url = splittedText.get(3)
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                context.startActivity(intent)
+            }
         }
     }
 
